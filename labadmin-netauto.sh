@@ -1,4 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#===================================================================================
+# LABADMIN 
+#         FILE: labadmin-netauto.sh
+#
+#  DESCRIPTION: 
+#
+#       AUTHOR: Leonardo Marco (labadmin@leonardomarco.com)
+#	     LICENSE: GNU General Public License v3.0
+#      VERSION: 2026.06
+#      CREATED: 2026.06.01
+#===================================================================================
+
 iface=$(ip -c=never -o link show | grep -Eo "^[0-9]: [[:alnum:]]+" | cut -f2 -d" " | egrep -v "^lo|^w" | head -1)
 ip link set "$iface" up
 dhclient "$iface"
