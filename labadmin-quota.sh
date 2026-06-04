@@ -1,4 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#===================================================================================
+# LABADMIN QUOTA CHECK
+#         FILE: labadmin-quota.sh
+#
+#  DESCRIPTION: Check / and /home left space and warn users about 
+#
+#       AUTHOR: Leonardo Marco (labadmin@leonardomarco.com)
+#	   LICENSE: GNU General Public License v3.0
+#      VERSION: 
+#      CREATED: 
+#===================================================================================
 
 
 # MAIN CONFIG  
