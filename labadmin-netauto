@@ -3,7 +3,7 @@
 # LABADMIN 
 #         FILE: labadmin-netauto
 #
-#  DESCRIPTION: 
+#  DESCRIPTION: Automatically set UP first network interface and config using DHCP
 #
 #       AUTHOR: Leonardo Marco (labadmin@leonardomarco.com)
 #	     LICENSE: GNU General Public License v3.0
