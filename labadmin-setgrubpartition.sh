@@ -1,0 +1,40 @@
+#!/bin/bash 
+grub_cfg="/boot/efi/EFI/debian/grub.cfg"
+dev="/dev/$1"
+uuid=$(blkid -s UUID -o value "$dev")
+
+# Check $1 is dev file
+if [ $? -ne 0 ] || [ ! "$uuid" ]; then
+	echo "ERROR: loading UUID from device $dev" >&2
+	echo "USAGE: $(basename "$0") device-id" >&2
+	echo "EXAMPLE: $(basename "$0") sda2"
+	echo
+	exit 1
+fi
+
+# Check exists efi grub config file
+if [ ! -w "$grub_cfg" ]; then
+	echo "ERROR: cant access efi grub config file $grub_cfg" >&2
+	exit 1
+fi
+
+# Check dev file is linux part
+mp=$(findmnt -rn -S "$dev" -o TARGET | head -n1)
+dev_linux="true"
+if [ "$mp" ]; then
+	[ ! -f "${mp}/boot/grub/grub.cfg" ] && dev_linux=""
+else
+	mp="$(mktemp -d /tmp/check-grubcfg.XXXXXX)"
+	mount "$dev" "$mp"
+	[ ! -f "${mp}/boot/grub/grub.cfg" ] && dev_linux=""
+	umount "$mp"
+fi
+if [ ! "$dev_linux" ]; then
+	echo -e "ERROR: Cant access /boot/grub/grub.cfg on $dev.\nSure is Linux partition?" >&2
+	exit 1
+fi
+
+echo "Configuring Grub EFI config file: $grub_cfg"
+sed -i "0,/^search/{s|^search.*|search --fs-uuid --set=root $uuid|}" "$grub_cfg"
+cat "$grub_cfg"
+
