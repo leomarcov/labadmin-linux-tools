@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===================================================================================
 # LABADMIN QUOTA CHECK
-#         FILE: labadmin-quota.sh
+#         FILE: labadmin-quota
 #
 #  DESCRIPTION: Check / and /home left space and warn users about 
 #
