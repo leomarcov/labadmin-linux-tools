@@ -1,4 +1,16 @@
-#!/bin/bash 
+#!/usr/bin/env bash
+#===================================================================================
+# LABADMIN SET GRUB PARTITION
+#         FILE: labadmin-setgrubpartition.sh
+#
+#  DESCRIPTION: 
+#
+#       AUTHOR: Leonardo Marco (labadmin@leonardomarco.com)
+#	   LICENSE: GNU General Public License v3.0
+#      VERSION: 2026.06
+#      CREATED: 2026.06.01
+#===================================================================================
+
 grub_cfg="/boot/efi/EFI/debian/grub.cfg"
 dev="/dev/$1"
 uuid=$(blkid -s UUID -o value "$dev")
