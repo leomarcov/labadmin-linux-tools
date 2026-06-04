@@ -22,7 +22,7 @@ if [ "$1" = "--install" ]; then
   
   [Service]
   Type=oneshot
-  ExecStart=/opt/labadmin-linux-tools/labadmin-netauto.sh
+  ExecStart=/opt/labadmin-linux-tools/labadmin-netauto
   RemainAfterExit=yes
   
   [Install]
