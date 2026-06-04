@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===================================================================================
 # LABADMIN SET GRUB PARTITION
-#         FILE: labadmin-setgrubpartition.sh
+#         FILE: labadmin-setgrubpartition
 #
 #  DESCRIPTION: 
 #
