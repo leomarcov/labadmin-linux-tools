@@ -12,7 +12,7 @@
 #===================================================================================
 
 grub_cfg="/boot/efi/EFI/debian/grub.cfg"
-dev="/dev/$1"
+dev="/dev/$1" 
 uuid=$(blkid -s UUID -o value "$dev")
 
 # Check $1 is dev file
