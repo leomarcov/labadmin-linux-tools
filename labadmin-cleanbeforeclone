@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#===================================================================================
+# LABADMIN 
+#         FILE: labadmin-cleanbeforeclone
+#
+#  DESCRIPTION: Clean users data logs before clone system
+#
+#       AUTHOR: Leonardo Marco (labadmin@leonardomarco.com)
+#	     LICENSE: GNU General Public License v3.0
+#      VERSION: 2026.06
+#      CREATED: 2026.06.01
+#===================================================================================
+
+rm /home/*/.bash_history /root/.bash_history
+rm /home/*/.cache/xfce4/clipman/textsrc /root/.cache/xfce4/clipman/textsrc
+rm -rf /home/*/.cache/sublimetext /root/.cache/sublimetext
+rm /var/log/lss-agent/scripts/*
+echo '' > /var/log/lss-agent/log
+
+read -p "New hostname: " hn
+[ "$hn" ] && hostnamectl set-hostname "$hn"
+hostname
+
+history -c
